@@ -11,9 +11,11 @@ function getArticleContent(articleName) {
 
 function Article() {
     let articleName = useParams().articleName;
-    let articleContent = getArticleContent(articleName);
+
     const [text, setText] = useState("Loading...")
-    useEffect(() => {articleContent.then(result => {setText(result)})}, [articleContent, articleName]);
+    useEffect(() => {
+        let articleContent = getArticleContent(articleName);
+        articleContent.then(result => {setText(result)})}, [articleName]);
     return(
     <ReactMarkdown>{text}</ReactMarkdown>
     )
