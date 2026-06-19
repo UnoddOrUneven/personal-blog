@@ -1,0 +1,61 @@
+.list-container {
+  min-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border-color: black;
+  border-style: solid;
+  border-width: 0.2rem;
+  padding: 1rem;
+}
+.list-header {
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+}
+.article-list{
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  text-align: left;
+  justify-content: left;
+  ul{
+    list-style: none;
+  }
+
+}
+.article-button {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  scale: 1.5;
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+.article-button:hover {
+  color: red;
+  padding: 0.6rem;
+}
+.login-button {
+
+  display: flex;
+  background-color: transparent;
+  border: 0.2rem solid black;
+  font-size: 1rem;
+}
+.login-button:hover {
+  scale: 1.05;
+}
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+}
