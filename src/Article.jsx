@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 import loadArticles,  {trimArticleName} from "./articleLoader.js";
 import {useEffect, useState} from "react";
+import ReactMarkdown from "react-markdown";
 
 function getArticleContent(articleName) {
     const articles = loadArticles()
@@ -14,7 +15,7 @@ function Article() {
     const [text, setText] = useState("Loading...")
     useEffect(() => {articleContent.then(result => {setText(result)})}, [articleContent, articleName]);
     return(
-    <div> {text}</div>
+    <ReactMarkdown>{text}</ReactMarkdown>
     )
 }
 export default Article;
