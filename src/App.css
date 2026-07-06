@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .list-container {
   min-height: 80vh;
   display: flex;
@@ -57,5 +61,34 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+}
 
+.create-article-button {
+  display: flex;
+  justify-content: right;
+  color: black;
+  border: black;
+  border-style: solid;
+  background-color: white;
+}
+
+.write-article{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 10rem;
+  }
+.write-article-name{
+  border: 0.05rem solid black;
+}
+.write-article {
+    height: 900%;
+  }
+.article-textarea{
+  height: 900%;
+  min-height: 20rem;
+  min-width: 70rem;
+
+  border: 0.1rem solid black;
 }

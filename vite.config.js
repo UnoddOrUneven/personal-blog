@@ -41,6 +41,9 @@ export default defineConfig({
     plugins: [react(), basicAuth({user: 'admin', pass: '123'})],
     server: {
         port: 3000,
-        host: '0.0.0.0'
+        host: '0.0.0.0',
+        proxy: {
+            "/articles": "http://localhost:3001",
+        }
     }
 })

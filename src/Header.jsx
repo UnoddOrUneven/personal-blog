@@ -1,4 +1,3 @@
-import App from "./App.jsx";
 
 function Header({children}) {
     return(
