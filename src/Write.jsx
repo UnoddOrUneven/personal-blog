@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useParams} from "react-router-dom";
 
 function Write() {
     const [name, setName] = useState('');
@@ -13,6 +14,18 @@ function Write() {
 
     }
 
+    const {articleName} = useParams();
+    const isEditing = Boolean(articleName);
+
+    useEffect(() => {
+      if (!isEditing) return;
+
+      setName(articleName);
+
+      fetch(`/api/article/${articleName}`)
+          .then(response => response.text())
+          .then(text => setContent(text));
+  }, [articleName, isEditing]);
 
     return (
         <div className="write-article">

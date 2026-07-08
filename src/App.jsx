@@ -22,6 +22,7 @@ function App() {
                 <Route path="/" element={<Navigate to="/home" replace />} />
                 <Route path="/admin" element={<Admin/>}/>
                 <Route path="/write" element={<Write/>}/>
+                <Route path="/write/:articleName" element={<Write/>}/>
                 <Route path ="/home" element ={<Home/>}/>
                 <Route path ="/articles/:articleName" element ={<Article/>}/>
                 </Routes>
