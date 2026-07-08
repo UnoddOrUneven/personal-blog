@@ -5,7 +5,7 @@ function Write() {
     const [content, setContent] = useState('');
 
     async function saveArticle() {
-        fetch("/articles",{
+        fetch("/api/articles",{
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({name,content})
@@ -20,7 +20,10 @@ function Write() {
                    placeholder='Name of the article'/>
             <textarea value={content} onChange={e => setContent(e.target.value)}
                       className={"article-textarea"}></textarea>
+            <div className ={"write-article-buttons-container"}> 
             <button type='submit' onClick = {() => saveArticle()} className={"create-article-button"}>Save</button>
+            <button className = "back-button" onClick={() => window.history.back()}> Back </button>
+            </div>
         </div>
     )
 

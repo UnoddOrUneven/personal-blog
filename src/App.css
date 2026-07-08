@@ -1,94 +1,152 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .list-container {
-  min-height: 80vh;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  border-color: black;
-  border-style: solid;
-  border-width: 0.2rem;
-  padding: 1rem;
+    min-height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-color: black;
+    border-style: solid;
+    border-width: 0.2rem;
+    padding: 1rem;
+    width: 100%;
+    padding: 1rem;
 }
-.list-header {
-  text-align: center;
-  color: black;
-  font-size: 2rem;
-  padding-bottom: 0.5rem;
-  font-weight: bold;
+.list-container > * {
+    min-width: 0;
 }
-.article-list{
-  color: black;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  text-align: left;
-  justify-content: left;
-  ul{
-    list-style: none;
-  }
 
+.list-header {
+    text-align: center;
+    color: black;
+    font-size: 2rem;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
 }
-.article-button {
-  display: flex;
-  background-color: transparent;
-  border: none;
-  scale: 1.5;
-  font-size: 1rem;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  padding: 0.5rem;
+
+.article-list {
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: left;;
+
+    ul {
+        list-style: none;
+    }
 }
+
+
+
+.article-link {
+    display: flex;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    scale: 1.5;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
 .article-button:hover {
-  color: red;
-  padding: 0.6rem;
+    color: red;
+    padding: 0.6rem;
 }
+
 .login-button {
 
-  display: flex;
-  background-color: transparent;
-  border: 0.2rem solid black;
-  font-size: 1rem;
+    display: flex;
+    background-color: transparent;
+    border: 0.2rem solid black;
+    font-size: 1rem;
 }
+
 .login-button:hover {
-  scale: 1.05;
+    scale: 1.05;
 }
+
 .app-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 }
 
 .create-article-button {
-  display: flex;
-  justify-content: right;
-  color: black;
-  border: black;
-  border-style: solid;
-  background-color: white;
+    display: flex;
+    justify-content: right;
+    font-size: 2rem;
+    color: black;
+    border: black;
+    background-color: white;
+    margin-bottom: 1rem;
+}
+.create-article-button:hover {
+    scale: 1.05;
 }
 
-.write-article{
+.article-markdown {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: black;
+
+}
+
+.write-article {
     display: flex;
     gap: 1rem;
     flex-direction: column;
     align-items: flex-start;
-    max-width: 10rem;
-  }
-.write-article-name{
-  border: 0.05rem solid black;
+    width: 100%;
 }
+
+.write-article-name {
+    border: 0.05rem solid black;
+}
+
 .write-article {
     height: 900%;
-  }
-.article-textarea{
-  height: 900%;
-  min-height: 20rem;
-  min-width: 70rem;
+}
 
-  border: 0.1rem solid black;
+.article-textarea {
+    height: 900%;
+    width: 100%;
+    min-height: 20rem;
+
+    border: 0.1rem solid black;
+}
+
+
+.write-article-buttons-container {
+    display:flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    align-items: flex-start;
+    max-width: 10rem;
+}
+
+
+.back-button {
+    display: flex;
+    justify-content: right;
+    font-size: 1.4rem;
+    color: black;
+    border: black;
+    background-color: white;
+    margin-bottom: 1rem;
+}
+
+
+
+.back-button:hover {
+    scale: 1.05;
 }

@@ -1,6 +1,6 @@
 import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
-
+import tailwindcss from "@tailwindcss/vite";
 
 function basicAuth({user, pass}) {
     return {
@@ -38,12 +38,12 @@ function wrongAuth(res, message) {
 
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [react(), basicAuth({user: 'admin', pass: '123'})],
+    plugins: [react(), basicAuth({user: 'admin', pass: '123'}),tailwindcss()],
     server: {
         port: 3000,
         host: '0.0.0.0',
         proxy: {
-            "/articles": "http://localhost:3001",
+            "/api": "http://localhost:3001",
         }
     }
 })

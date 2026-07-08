@@ -1,12 +1,13 @@
 import {useParams} from "react-router-dom";
-import loadArticles,  {trimArticleName} from "./articleLoader.js";
 import {useEffect, useState} from "react";
 import ReactMarkdown from "react-markdown";
 
-function getArticleContent(articleName) {
-    const articles = loadArticles()
-    const articleKey = Object.keys(articles).find(article => trimArticleName(article) === articleName)
-    return articles[articleKey]()
+async function getArticleContent(articleName) {
+    const response = await fetch("/api/article/".concat(articleName),{
+        method: "GET",
+        headers: {"Content-Type": "application/json"},
+    });
+    return await response.text();
 }
 
 function Article() {
@@ -17,7 +18,14 @@ function Article() {
         let articleContent = getArticleContent(articleName);
         articleContent.then(result => {setText(result)})}, [articleName]);
     return(
-    <ReactMarkdown>{text}</ReactMarkdown>
+        <div>
+            <div className="article-markdown">
+                <ReactMarkdown>{text}</ReactMarkdown>
+            </div>
+            <button className = "back-button" onClick={() => window.history.back()}>
+                Back
+            </button>
+        </div>
     )
 }
 export default Article;

@@ -1,4 +1,3 @@
-import './App.css'
 import loadArticles from './articleLoader.js'
 import {Link} from "react-router-dom";
 import {trimArticleName} from "./articleLoader.js";
@@ -18,7 +17,7 @@ function Home() {
                     {Object.keys(loadArticles()).map(article =>
                         (
                             <li key={article}>
-                                <Link to={`/articles/${trimArticleName(article)}`}> {trimArticleName(article)}</Link>
+                                <Link className =  "article-link" to={`/articles/${trimArticleName(article)}`}> {trimArticleName(article)}</Link>
                             </li>
                         )
                     )}
