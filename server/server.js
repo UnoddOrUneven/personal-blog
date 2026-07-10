@@ -2,6 +2,7 @@ import express from 'express';
 import fs from "node:fs"
 import path from "path";
 import {fileURLToPath} from 'url'
+import session from 'express-session';
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -9,17 +10,29 @@ const __dirname = path.dirname(__filename);
 const articleDir = path.join(__dirname, `../articles/`);
 
 
-app.use(express.json());                       // parses JSON bodies for you → req.body
+app.use(express.json(),session({ secret: 'your-secret-key', resave: false, saveUninitialized: false }));                       // parses JSON bodies for you → req.body
 
 app.get('/api/articles', (req, res) => {
     let files = fs.readdirSync(articleDir);
     res.json(files);
 });
+app.post('/api/auth', (req, res) => {
+    const { name, password } = req.body;
+    if (name === 'admin' && password === 'password') {
+        console.log('Login successful for', name);
+        req.session.user = {
+        name:"admin"
+        };
+        res.status(200).json({ message: 'Login successful' });
 
+    } else {
+        console.log('Login failed for', name);
+        res.status(401).json({ message: 'Invalid credentials' });
+    }
+});
 
-
-app.post('/api/articles', (req, res) => {
-    saveNewArticle(req.body.name ,req.body.content)
+app.post('/api/articles', requireAdmin, (req, res) => {
+    saveNewArticle(req.body.name ,req.body.content);
     res.status(201).send("Article saved");
 });
 
@@ -39,7 +52,12 @@ app.get('/api/article/:name', (req, res) => {
 app.listen(3001, () => console.log('api on 3001'));
 
 
-
+function requireAdmin(req,res,next){
+    if (!req.session.user || req.session.user.name !== "admin") {
+        return res.status(403).json({message:"Forbidden"});
+    }
+    next();
+}
 
 
 function saveNewArticle (name, content) {
