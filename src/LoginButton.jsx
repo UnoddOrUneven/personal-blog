@@ -3,7 +3,7 @@ function LoginButton() {
     const navigate = useNavigate();
     return (
         <div>
-            <button className="login-button" onClick={() => navigate('/admin')}>
+            <button className="login-button" onClick={() => navigate('/loginForm')}>
                 Log in
             </button>
         </div>

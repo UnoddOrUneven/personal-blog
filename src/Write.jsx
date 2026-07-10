@@ -32,7 +32,8 @@ function Write() {
             <input value={name} onChange={e => setName(e.target.value)} className="write-article-name" type='text'
                    placeholder='Name of the article'/>
             <textarea value={content} onChange={e => setContent(e.target.value)}
-                      className={"article-textarea"}></textarea>
+                      className={"article-textarea"}
+                      placeholder = "Write your article here..."></textarea>
             <div className ={"write-article-buttons-container"}> 
             <button type='submit' onClick = {() => saveArticle()} className={"create-article-button"}>Save</button>
             <button className = "back-button" onClick={() => window.history.back()}> Back </button>

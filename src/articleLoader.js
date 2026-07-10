@@ -1,8 +1,12 @@
 
-export default function loadArticles() {
-    const articles = import.meta.glob('../articles/*.md',{query:"?raw",import:"default"});
-    return articles;
-}
 export function trimArticleName(name) {
     return name.replace("../articles/", '').replace(".md", "");
 }
+
+
+export async function loadArticles(){
+    const response = await fetch("/api/articles");
+    return await response.json();
+}
+
+

@@ -63,6 +63,7 @@
 .article-link {
     display: flex;
     text-decoration: none;
+    color: black;
     background-color: transparent;
     border: none;
     scale: 1.5;
@@ -70,6 +71,10 @@
     font-family: Arial, sans-serif;
     font-weight: bold;
     padding: 0.5rem;
+}
+.article-link:hover {
+    color: red;
+    padding: 0.6rem;
 }
 
 .article-button:hover {
@@ -126,7 +131,9 @@
 }
 
 .write-article-name {
-    border: 0.05rem solid black;
+    border: none;
+    font-size: 1.5rem;
+    font-family: deja vu, sans-serif;
 }
 
 .write-article {

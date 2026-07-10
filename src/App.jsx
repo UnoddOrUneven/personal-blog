@@ -5,7 +5,7 @@ import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import Article from "./Article.jsx";
 import Admin from "./Admin.jsx";
 import Write from "./Write.jsx";
-
+import LoginForm from "./LoginForm.jsx";
 
 function App() {
     return (
@@ -25,6 +25,7 @@ function App() {
                 <Route path="/write/:articleName" element={<Write/>}/>
                 <Route path ="/home" element ={<Home/>}/>
                 <Route path ="/articles/:articleName" element ={<Article/>}/>
+                <Route path ="/loginForm" element ={<LoginForm/>}/>
                 </Routes>
             </div>
         </div>
