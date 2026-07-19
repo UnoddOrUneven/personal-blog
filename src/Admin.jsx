@@ -1,7 +1,7 @@
 import {trimArticleName,loadArticles} from "./articleLoader.js";
 import {Link, useNavigate} from "react-router-dom";
 import {useState,useEffect} from "react";
-
+import  {deleteArticle} from "./deleteArticle.js";
 
 function Admin()
 {
@@ -23,8 +23,9 @@ function Admin()
                          <li  key={article}>
                         <div className="list-element-container"> 
                        
-                            <Link className = "article-link" to={`/articles/${trimArticleName(article)}`}> {trimArticleName(article)}</Link>
+                            <Link className = "article-link" to={`/articles/${trimArticleName(article.name)}`}> {trimArticleName(article.name)}</Link>
                             <button className="edit-button" onClick = {() => navigate(`/write/${trimArticleName(article)}`)}> Edit</button>
+                            <button className="delete-button" onClick = {() => {deleteArticle(trimArticleName(article.name)); window.location.reload();}}>Delete</button>
                         </div>
                         </li>
                     )

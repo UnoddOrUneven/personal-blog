@@ -13,7 +13,16 @@ const articleDir = path.join(__dirname, `../articles/`);
 app.use(express.json(),session({ secret: 'your-secret-key', resave: false, saveUninitialized: false }));                       // parses JSON bodies for you → req.body
 
 app.get('/api/articles', (req, res) => {
-    let files = fs.readdirSync(articleDir);
+    let files = fs.readdirSync(articleDir).map(filename => {
+        const filePath = path.join(articleDir, filename);
+        const stats = fs.statSync(filePath);
+        return{
+            name: filename,
+            date: stats.mtime
+        }
+    });
+
+
     res.json(files);
 });
 app.post('/api/auth', (req, res) => {
@@ -46,6 +55,22 @@ app.get('/api/article/:name', (req, res) => {
     res.send(markdown);
 } )
 
+app.post("/api/delete-article/:name", requireAdmin, (req,res) => {
+    const articleName = req.params.name;
+     if (!/^[a-z0-9-]+$/i.test(articleName)) {
+        return res.status(400).json({
+            message: 'Invalid article name'})};
+     
+    
+    const filePath = path.join(articleDir, `${articleName}.md`);
+    fs.unlink(filePath, err => {
+        if (err) {
+            console.error(`Error deleting article ${articleName}:`, err);
+            return res.status(404).json({ message: 'Article not found' });
+        }
+    })
+    res.send(`Article ${articleName} deleted`);}
+)
 
 
 

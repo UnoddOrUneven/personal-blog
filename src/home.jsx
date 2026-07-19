@@ -23,7 +23,10 @@ function Home() {
                     {articles.map(article =>
                         (
                             <li key={article}>
-                                <Link className =  "article-link" to={`/articles/${trimArticleName(article)}`}> {trimArticleName(article)}</Link>
+                                <div className="article-list-item"> 
+                                <Link className =  "article-link" to={`/articles/${trimArticleName(article.name)}`}> {trimArticleName(article.name)}</Link>
+                                <div className="date-text">{new Date (article.date).toLocaleDateString()}</div>
+                                </div>
                             </li>
                         )
                     )}
