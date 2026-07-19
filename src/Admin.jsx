@@ -24,7 +24,7 @@ function Admin()
                         <div className="list-element-container"> 
                        
                             <Link className = "article-link" to={`/articles/${trimArticleName(article.name)}`}> {trimArticleName(article.name)}</Link>
-                            <button className="edit-button" onClick = {() => navigate(`/write/${trimArticleName(article)}`)}> Edit</button>
+                            <button className="edit-button" onClick = {() => navigate(`/write/${trimArticleName(article)}`)}>Edit</button>
                             <button className="delete-button" onClick = {() => {deleteArticle(trimArticleName(article.name)); window.location.reload();}}>Delete</button>
                         </div>
                         </li>

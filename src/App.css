@@ -20,7 +20,7 @@
 
 .list-element-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 2rem;
 }
 
@@ -42,6 +42,7 @@
 }
 .delete-button:hover {
     color: red;
+
 }
 
 .list-container > * {
