@@ -5,13 +5,21 @@ function Write() {
     const [name, setName] = useState('');
     const [content, setContent] = useState('');
 
-    async function saveArticle() {
-        fetch("/api/articles",{
+    async function createArticle() {
+        fetch("/api/save-article",{
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({name,content})
         });
 
+    }
+
+    async function updateArticle(){
+        fetch("/api/update-article",{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({name,content})
+        });
     }
 
     const {articleName} = useParams();
@@ -35,7 +43,7 @@ function Write() {
                       className={"article-textarea"}
                       placeholder = "Write your article here..."></textarea>
             <div className ={"write-article-buttons-container"}> 
-            <button type='submit' onClick = {() => saveArticle()} className={"create-article-button"}>Save</button>
+            <button type='submit' onClick = {isEditing ?  () => updateArticle():() => createArticle()} className={"create-article-button"}>{isEditing ? "Save Edit":"Create"}</button>
             <button className = "back-button" onClick={() => window.history.back()}> Back </button>
             </div>
         </div>

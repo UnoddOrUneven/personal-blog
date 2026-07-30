@@ -1,7 +1,11 @@
 
 export function trimArticleName(name) {
-    return name.replace("../articles/", '').replace(".md", "");
+    if (typeof name !== "string") {
+        console.warn("trimArticleName expected a string, got:", name);
+        return "";   }
+return name.replace("../articles/", '').replace(".md", "");
 }
+
 
 
 export async function loadArticles(){

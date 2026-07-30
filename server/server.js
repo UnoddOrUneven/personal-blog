@@ -40,11 +40,23 @@ app.post('/api/auth', (req, res) => {
     }
 });
 
-app.post('/api/articles', requireAdmin, (req, res) => {
+app.post('/api/save-article', requireAdmin, (req, res) => {
+    const articleNames = fs.readdirSync(articleDir);
+    if (articleNames.includes(req.body.name +
+        ".md"
+    )){
+        res.status(403).send("Article already exists");
+        console.log("Tried to overwrite an existing article")
+        return;
+    }
     saveNewArticle(req.body.name ,req.body.content);
     res.status(201).send("Article saved");
 });
 
+app.post("/api/update-article/",requireAdmin, (req,res)=> {
+    saveNewArticle(req.body.name ,req.body.content);
+    res.status(201).send("Article updated");
+});
 
 app.get('/api/article/:name', (req, res) => {
     const articleName = req.params.name;
