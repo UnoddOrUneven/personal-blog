@@ -45,7 +45,7 @@ app.post('/api/save-article', requireAdmin, (req, res) => {
     if (articleNames.includes(req.body.name +
         ".md"
     )){
-        res.status(403).send("Article already exists");
+        res.status(409).send("Article already exists");
         console.log("Tried to overwrite an existing article")
         return;
     }

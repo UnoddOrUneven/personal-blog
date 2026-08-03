@@ -134,7 +134,7 @@
     color: black;
     border: black;
     background-color: white;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 .create-article-button:hover {
     scale: 1.05;
@@ -177,11 +177,17 @@
 .write-article-buttons-container {
     display:flex;
     flex-direction: column;
-    margin-top: 5rem;
+    margin-top: 1rem;
     align-items: flex-start;
     max-width: 10rem;
 }
 
+.messageDisplay {
+    color: red;
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+    width: 200%;
+}
 
 .back-button {
     display: flex;

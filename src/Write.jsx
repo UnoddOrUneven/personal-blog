@@ -6,13 +6,27 @@ function Write() {
     const [content, setContent] = useState('');
 
     async function createArticle() {
-        fetch("/api/save-article",{
+        const res = await fetch("/api/save-article",{
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({name,content})
         });
-
+        if (res.status === 409){
+            setMessage("Article already exists. Please choose a different name.");
+        }
+        if (res.status === 403){
+            setMessage("You are not authorized to create articles. Please log in as an admin.");
+        }
+        if (res.ok){
+            setMessage("");
+        }
     }
+
+    function setMessage(message) {
+        const messageElement = document.getElementById("message");
+        messageElement.textContent = message;
+    }
+
 
     async function updateArticle(){
         fetch("/api/update-article",{
@@ -24,7 +38,7 @@ function Write() {
 
     const {articleName} = useParams();
     const isEditing = Boolean(articleName);
-
+    const err = "";
     useEffect(() => {
       if (!isEditing) return;
 
@@ -43,6 +57,7 @@ function Write() {
                       className={"article-textarea"}
                       placeholder = "Write your article here..."></textarea>
             <div className ={"write-article-buttons-container"}> 
+            <p id = "message" className = "messageDisplay"></p>
             <button type='submit' onClick = {isEditing ?  () => updateArticle():() => createArticle()} className={"create-article-button"}>{isEditing ? "Save Edit":"Create"}</button>
             <button className = "back-button" onClick={() => window.history.back()}> Back </button>
             </div>
